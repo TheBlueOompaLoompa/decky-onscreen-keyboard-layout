@@ -94,6 +94,13 @@ export default definePlugin((serverApi: ServerAPI) => {
     exact: true,
   });
 
+  const myPatch = serverApi.routerHook.addPatch('*',
+  (props: { path: string; children: ReactElement }) => {
+    console.log(props);
+    return props
+  });
+
+
   return {
     title: <div className={staticClasses.Title}>Example Plugin</div>,
     content: <Content serverAPI={serverApi} />,
